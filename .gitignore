@@ -1,0 +1,17 @@
+outputs/
+data/
+datasets/
+models/
+artifacts/
+*.csv
+*.xlsx
+*.parquet
+*.pkl
+*.joblib
+*.pt
+*.onnx
+__pycache__/
+.pytest_cache/
+dist/
+build/
+*.egg-info/
