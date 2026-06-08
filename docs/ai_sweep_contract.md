@@ -30,6 +30,12 @@ The manifest stores segment sample/time ranges, target config fields, mode, vari
 
 The segment parser splits a long measurement DataFrame by manifest support windows. It does not interpolate, smooth, phase-align, normalize measured field, compute residuals, or fill missing support with zeros.
 
+## Segment Alignment / Residual Builder
+
+The segment alignment builder is offline analysis only. It takes one parsed segment and its manifest row, generates a deterministic `fixed_rounded_triangle` target grid, interpolates measured effective field onto that grid, and computes `residual_total_mT` plus peak-normalized `residual_shape_mT` for dataset building.
+
+Phase sync is limited to deterministic offline alignment methods. Missing measured support is represented as `NaN`, not zero-filled. This module does not invoke hardware, does not call production modeling code, and does not perform ML/RL training.
+
 ## Voltage Policy
 
 Voltage policy comes from `coil_ai_sweep.core_adapter`. Production integration should use a pinned core dependency through `COIL_ANALYZING_CORE_SRC`. Standalone fallback is marked in metadata.

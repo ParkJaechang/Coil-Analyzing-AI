@@ -7,6 +7,11 @@ from .schema import (
     SweepSegmentSpec,
     SweepTargetConfig,
 )
+from .segment_alignment import (
+    SegmentAlignmentConfig,
+    SegmentAlignmentResult,
+    build_aligned_segment_residual,
+)
 from .segment_parser import SegmentMeasurement, SegmentSplitResult, split_long_measurement_by_manifest
 from .sweep_plan import SweepPlanConfig, build_sweep_plan, plan_to_dataframe
 from .sweep_lut_generator import (
@@ -17,6 +22,8 @@ from .sweep_lut_generator import (
 
 __all__ = [
     "ManifestValidationResult",
+    "SegmentAlignmentConfig",
+    "SegmentAlignmentResult",
     "SegmentMeasurement",
     "SegmentCommandInput",
     "SegmentSplitResult",
@@ -25,6 +32,7 @@ __all__ = [
     "SweepSegmentManifestRow",
     "SweepSegmentSpec",
     "SweepTargetConfig",
+    "build_aligned_segment_residual",
     "build_sweep_lut_from_segment_commands",
     "build_sweep_plan",
     "get_voltage_limit_v",
