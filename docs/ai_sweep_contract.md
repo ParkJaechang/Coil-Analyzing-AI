@@ -36,6 +36,12 @@ The segment alignment builder is offline analysis only. It takes one parsed segm
 
 Phase sync is limited to deterministic offline alignment methods. Missing measured support is represented as `NaN`, not zero-filled. This module does not invoke hardware, does not call production modeling code, and does not perform ML/RL training.
 
+## Shape Metrics / Training Packet
+
+The training packet builder is offline and in-memory only. It summarizes one `SegmentAlignmentResult` over the evaluation mask with total residual, peak-normalized shape residual, and normalized shape residual metrics, then packages those metrics with manifest target fields, variant parameters, selected aligned-frame samples, and safety metadata.
+
+Packets are JSON-safe dictionaries for downstream dataset generation. Non-finite values are represented as `null`, not `NaN`, and the builder does not write files, invoke hardware, call production modeling code, or perform ML/RL training.
+
 ## Voltage Policy
 
 Voltage policy comes from `coil_ai_sweep.core_adapter`. Production integration should use a pinned core dependency through `COIL_ANALYZING_CORE_SRC`. Standalone fallback is marked in metadata.

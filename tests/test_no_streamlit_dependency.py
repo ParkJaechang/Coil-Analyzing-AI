@@ -16,6 +16,7 @@ MODULE_NAMES = [
     "coil_ai_sweep.sweep_plan",
     "coil_ai_sweep.sweep_lut_generator",
     "coil_ai_sweep.segment_parser",
+    "coil_ai_sweep.training_packet",
 ]
 
 

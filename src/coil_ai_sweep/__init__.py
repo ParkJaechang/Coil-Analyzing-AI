@@ -19,12 +19,14 @@ from .sweep_lut_generator import (
     SweepLutBuildResult,
     build_sweep_lut_from_segment_commands,
 )
+from .training_packet import SegmentShapeMetrics, build_segment_training_packet, build_shape_metrics
 
 __all__ = [
     "ManifestValidationResult",
     "SegmentAlignmentConfig",
     "SegmentAlignmentResult",
     "SegmentMeasurement",
+    "SegmentShapeMetrics",
     "SegmentCommandInput",
     "SegmentSplitResult",
     "SweepPlanConfig",
@@ -33,6 +35,8 @@ __all__ = [
     "SweepSegmentSpec",
     "SweepTargetConfig",
     "build_aligned_segment_residual",
+    "build_segment_training_packet",
+    "build_shape_metrics",
     "build_sweep_lut_from_segment_commands",
     "build_sweep_plan",
     "get_voltage_limit_v",
