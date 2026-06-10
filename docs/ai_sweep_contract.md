@@ -52,6 +52,20 @@ For each detected peak role, it computes measured field peak per voltage peak, p
 
 The builder does not invoke hardware, does not connect to WebApp or WinApp, does not call production modeling code, does not compute full residuals, and does not train ML/RL models.
 
+## Batch Experiment Builder
+
+The batch experiment builder aggregates peak-centered source response outputs from multiple parsed source segments. For each source segment, it builds a peak response result, aggregates review peak rows, and converts safe keypoint command profiles into `SegmentCommandInput` records for the next experiment sweep.
+
+Blocked peak rows are kept for review when configured, but blocked command profiles are excluded from the generated sweep LUT. The first implementation does not support including blocked commands.
+
+When safe command profiles are available, the builder calls the sweep LUT concatenation builder and the hardware LUT remains exactly:
+
+```text
+sample_index,time_s,voltage_v
+```
+
+The builder does not invoke hardware, does not connect to WebApp or WinApp, does not write files, does not call production modeling code, and does not train ML/RL models.
+
 ## Voltage Policy
 
 Voltage policy comes from `coil_ai_sweep.core_adapter`. Production integration should use a pinned core dependency through `COIL_ANALYZING_CORE_SRC`. Standalone fallback is marked in metadata.

@@ -1,5 +1,11 @@
 """Experimental AI sweep manifest schema helpers."""
 
+from .batch_experiment_builder import (
+    BatchExperimentBuildResult,
+    BatchExperimentConfig,
+    BatchSourceSegment,
+    build_batch_experiment_from_peak_responses,
+)
 from .core_adapter import get_voltage_limit_v, get_voltage_policy_metadata
 from .peak_response_modeling import (
     PeakResponseBuildResult,
@@ -28,6 +34,9 @@ from .sweep_lut_generator import (
 from .training_packet import SegmentShapeMetrics, build_segment_training_packet, build_shape_metrics
 
 __all__ = [
+    "BatchExperimentBuildResult",
+    "BatchExperimentConfig",
+    "BatchSourceSegment",
     "ManifestValidationResult",
     "SegmentAlignmentConfig",
     "SegmentAlignmentResult",
@@ -44,6 +53,7 @@ __all__ = [
     "SweepSegmentSpec",
     "SweepTargetConfig",
     "build_aligned_segment_residual",
+    "build_batch_experiment_from_peak_responses",
     "build_peak_response_from_source_segment",
     "build_segment_training_packet",
     "build_shape_metrics",
