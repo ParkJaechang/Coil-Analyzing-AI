@@ -1,6 +1,12 @@
 """Experimental AI sweep manifest schema helpers."""
 
 from .core_adapter import get_voltage_limit_v, get_voltage_policy_metadata
+from .peak_response_modeling import (
+    PeakResponseBuildResult,
+    PeakResponseConfig,
+    PeakResponseRecord,
+    build_peak_response_from_source_segment,
+)
 from .schema import (
     ManifestValidationResult,
     SweepSegmentManifestRow,
@@ -27,6 +33,9 @@ __all__ = [
     "SegmentAlignmentResult",
     "SegmentMeasurement",
     "SegmentShapeMetrics",
+    "PeakResponseBuildResult",
+    "PeakResponseConfig",
+    "PeakResponseRecord",
     "SegmentCommandInput",
     "SegmentSplitResult",
     "SweepPlanConfig",
@@ -35,6 +44,7 @@ __all__ = [
     "SweepSegmentSpec",
     "SweepTargetConfig",
     "build_aligned_segment_residual",
+    "build_peak_response_from_source_segment",
     "build_segment_training_packet",
     "build_shape_metrics",
     "build_sweep_lut_from_segment_commands",

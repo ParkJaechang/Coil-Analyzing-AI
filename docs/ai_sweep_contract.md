@@ -42,6 +42,16 @@ The training packet builder is offline and in-memory only. It summarizes one `Se
 
 Packets are JSON-safe dictionaries for downstream dataset generation. Non-finite values are represented as `null`, not `NaN`, and the builder does not write files, invoke hardware, call production modeling code, or perform ML/RL training.
 
+## Peak-Centered Source Response Builder
+
+The peak response builder uses real 2Vpp triangle actual-drive source data to extract peak-role field-per-volt responses for offline dataset generation and review. It supports finite `cycle_count` 1.0 roles `positive_peak_1`, `negative_peak_1`, and finite `cycle_count` 1.5 roles `positive_peak_1`, `negative_peak_1`, `positive_peak_2`.
+
+The builder preserves the HallBz convention: `effective_field_mT = -HallBz raw`. If `effective_field_mT` is already present, it is used as-is; if only `hallbz_raw_mT` is present, the sign is inverted before peak detection.
+
+For each detected peak role, it computes measured field peak per voltage peak, phase delay metadata, and the required signed voltage peak for the requested `target_peak_mT`. The initial keypoint command candidate uses the original voltage peak times and does not apply phase lead.
+
+The builder does not invoke hardware, does not connect to WebApp or WinApp, does not call production modeling code, does not compute full residuals, and does not train ML/RL models.
+
 ## Voltage Policy
 
 Voltage policy comes from `coil_ai_sweep.core_adapter`. Production integration should use a pinned core dependency through `COIL_ANALYZING_CORE_SRC`. Standalone fallback is marked in metadata.
