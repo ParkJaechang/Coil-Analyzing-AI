@@ -66,6 +66,14 @@ sample_index,time_s,voltage_v
 
 The builder does not invoke hardware, does not connect to WebApp or WinApp, does not write files, does not call production modeling code, and does not train ML/RL models.
 
+## Source-Response Batch Dataset Export
+
+The source-response batch dataset export builder creates an in-memory JSON-safe packet from a batch experiment result. It standardizes the later external save contract without writing files itself.
+
+The packet separates peak response review records from generated command segment summaries. Full command and LUT samples are excluded by default; full LUT samples can only be included when explicitly requested and below the configured inline sample limit.
+
+Blocked sources are kept for review, but blocked command profiles are not included as generated command segments. The export packet records safety metadata including no hardware invocation, no WebApp or WinApp integration, no file writing, and no ML/RL training.
+
 ## Voltage Policy
 
 Voltage policy comes from `coil_ai_sweep.core_adapter`. Production integration should use a pinned core dependency through `COIL_ANALYZING_CORE_SRC`. Standalone fallback is marked in metadata.
